@@ -1,34 +1,34 @@
 # tmdb
 
-This template should help get you started developing with Vue 3 in Vite.
+Este modelo deve ajudar você a começar a desenvolver com Vue 3 no Vite.
 
-## Recommended IDE Setup
+## Configuração IDE Recomendada
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (e desative o Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Customize configuration
+## Personalize a configuração
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Consulte [Referência de Configuração do Vite](https://vitejs.dev/config/).
 
-## Project Setup
+## Configuração do Projeto
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compilar e Recarregar Automaticamente para Desenvolvimento
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Compilar e Minificar para Produção
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Verificar com o [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
