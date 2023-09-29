@@ -1,25 +1,28 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
+import Loading from 'vue-loading-overlay'
 
+const isLoading = ref(false);
 const genres = ref([])
+const movies = ref([]);
 
 onMounted(async () => {
   const response = await api.get('genre/movie/list?language=pt-BR')
   genres.value = response.data.genres
 })
 
-const movies = ref([]);
-
 const listMovies = async (genreId) => {
+  isLoading.value = true
   const response = await api.get('discover/movie', {
     params: {
       with_genres: genreId,
       language: 'pt-BR'
     }
-  });
+  })
   movies.value = response.data.results
-};
+  isLoading.value = false
+}
 </script>
 
 <template>
@@ -29,6 +32,8 @@ const listMovies = async (genreId) => {
       {{ genre.name }}
     </li>
   </ul>
+
+  <loading v-model:active="isLoading" is-full-page />
 
   <div class="movie-list">
   <div v-for="movie in movies" :key="movie.id" class="movie-card">
