@@ -7,6 +7,8 @@ const isLoading = ref(false);
 const genres = ref([])
 const tv_shows = ref([]);
 
+const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
+
 const listTvShows = async (genreId) => {
   isLoading.value = true;
   const response = await api.get('discover/tv', {
@@ -42,7 +44,11 @@ onMounted(async () => {
       <div class="tvShow-details">
         <p class="tvShow-title">{{ tvShow.name }}</p>
         <p class="tvShow-release-date">{{ tvShow.first_air_date }}</p>
-        <p class="tvShow-genres">{{ tvShow.genre_ids }}</p>
+        <p class="tvShow-genres">
+          <span v-for="genre_id in tvShow.genre_ids" :key="genre_id" @click="listTvShows(genre_id)">
+            {{ getGenreName(genre_id) }}
+          </span>
+        </p>
       </div>
 
     </div>
@@ -56,7 +62,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   gap: 2rem;
   list-style: none;
-  padding: 0;
+  margin-bottom: 2rem;
 }
 
 .genre-item {
@@ -105,5 +111,29 @@ onMounted(async () => {
   font-weight: bold;
   line-height: 1.3rem;
   height: 3.2rem;
+}
+
+.tvShow-genres {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.tvShow-genres span {
+  background-color: #748708;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.tvShow-genres span:hover {
+  cursor: pointer;
+  background-color: #455a08;
+  box-shadow: 0 0 0.5rem #748708;
 }
 </style>
