@@ -8,6 +8,7 @@ const genres = ref([])
 const tv_shows = ref([]);
 
 const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
+const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR')
 
 const listTvShows = async (genreId) => {
   isLoading.value = true;
@@ -43,7 +44,7 @@ onMounted(async () => {
       <img :src="`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`" :alt="tvShow.name" />
       <div class="tvShow-details">
         <p class="tvShow-title">{{ tvShow.name }}</p>
-        <p class="tvShow-release-date">{{ tvShow.first_air_date }}</p>
+        <p class="tvShow-first-air-date">{{ formatDate(tvShow.first_air_date) }}</p>
         <p class="tvShow-genres">
           <span v-for="genre_id in tvShow.genre_ids" :key="genre_id" @click="listTvShows(genre_id)">
             {{ getGenreName(genre_id) }}
