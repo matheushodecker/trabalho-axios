@@ -6,7 +6,6 @@ import genreStore from '@/stores/genre'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
 const isLoading = ref(false);
 const movies = ref([]);
 

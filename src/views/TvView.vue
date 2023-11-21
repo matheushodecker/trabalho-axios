@@ -1,12 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
+import Loading from 'vue-loading-overlay'
 
+const isLoading = ref(false);
 const genres = ref([])
-
 const tv_shows = ref([]);
 
 const listTvShows = async (genreId) => {
+  isLoading.value = true;
   const response = await api.get('discover/tv', {
     params: {
       with_genres: genreId,
@@ -14,6 +16,7 @@ const listTvShows = async (genreId) => {
     }
   });
   tv_shows.value = response.data.results
+  isLoading.value = false;
 };
 
 onMounted(async () => {
@@ -29,6 +32,8 @@ onMounted(async () => {
       {{ genre.name }}
     </li>
   </ul>
+
+  <loading v-model:active="isLoading" is-full-page />
 
   <div class="tvShow-list">
     <div v-for="tvShow in tv_shows" :key="tvShow.id" class="tvShow-card">
