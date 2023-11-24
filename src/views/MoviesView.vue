@@ -38,10 +38,13 @@ onMounted(async () => {
 <template>
   <h1>Filmes</h1>
   <ul class="genre-list">
-    <li v-for="genre in genreStore.genres"
-    :key="genre.id"
-    @click="listMovies(genre.id)" class="genre-item"
-      :class="{ active: genre.id === genreStore.currentGenreId }">
+    <li
+      v-for="genre in genreStore.genres"
+      :key="genre.id"
+      @click="listMovies(genre.id)"
+      class="genre-item"
+      :class="{ active: genre.id === genreStore.currentGenreId }"
+    >
       {{ genre.name }}
     </li>
   </ul>
@@ -55,10 +58,12 @@ onMounted(async () => {
         <p class="movie-title">{{ movie.title }}</p>
         <p class="movie-release-date">{{ formatDate(movie.release_date) }}</p>
         <p class="movie-genres">
-          <span v-for="genre_id in movie.genre_ids"
-          :key="genre_id"
-          @click="listMovies(genre_id)"
-            :class="{ active: genre_id === genreStore.currentGenreId }">
+          <span
+            v-for="genre_id in movie.genre_ids"
+            :key="genre_id"
+            @click="listMovies(genre_id)"
+            :class="{ active: genre_id === genreStore.currentGenreId }"
+          >
             {{ genreStore.getGenreName(genre_id) }}
           </span>
         </p>
