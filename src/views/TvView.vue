@@ -2,12 +2,11 @@
 import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
 import Loading from 'vue-loading-overlay'
+import genreStore from '@/stores/genre'
 
 const isLoading = ref(false);
-const genres = ref([])
 const tv_shows = ref([]);
 
-const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
 const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR')
 
 const listTvShows = async (genreId) => {
@@ -23,15 +22,18 @@ const listTvShows = async (genreId) => {
 };
 
 onMounted(async () => {
-  const response = await api.get('genre/tv/list?language=pt-BR')
-  genres.value = response.data.genres
+  isLoading.value = true;
+  await genreStore.getAllGenres('tv');
+  isLoading.value = false;
 })
 </script>
 
 <template>
   <h1>Programas de TV</h1>
   <ul class="genre-list">
-    <li v-for="genre in genres" :key="genre.id" @click="listTvShows(genre.id)" class="genre-item">
+    <li v-for="genre in genreStore.genres"
+    :key="genre.id"
+    @click="listTvShows(genre.id)" class="genre-item">
       {{ genre.name }}
     </li>
   </ul>
@@ -40,18 +42,18 @@ onMounted(async () => {
 
   <div class="tvShow-list">
     <div v-for="tvShow in tv_shows" :key="tvShow.id" class="tvShow-card">
-
       <img :src="`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`" :alt="tvShow.name" />
       <div class="tvShow-details">
         <p class="tvShow-title">{{ tvShow.name }}</p>
         <p class="tvShow-first-air-date">{{ formatDate(tvShow.first_air_date) }}</p>
         <p class="tvShow-genres">
-          <span v-for="genre_id in tvShow.genre_ids" :key="genre_id" @click="listTvShows(genre_id)">
-            {{ getGenreName(genre_id) }}
+          <span v-for="genre_id in tvShow.genre_ids"
+          :key="genre_id"
+          @click="listTvShows(genre_id)">
+            {{ genreStore.getGenreName(genre_id) }}
           </span>
         </p>
       </div>
-
     </div>
   </div>
 </template>
