@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useMovieStore } from '@/stores/movie';
 
 const movieStore = useMovieStore();
@@ -23,7 +23,7 @@ onMounted(async () => {
                 :alt="movieStore.currentMovie.title" />
 
             <div class="details">
-                <h1>Filme: {{ movieStore.currentMovie.title }}</h1>
+                <h1>{{ movieStore.currentMovie.title }}</h1>
                 <p>{{ movieStore.currentMovie.tagline }}</p>
                 <p>{{ movieStore.currentMovie.overview }}</p>
                 <p>Orçamento: ${{ movieStore.currentMovie.budget }}</p>
