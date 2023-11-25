@@ -6,7 +6,7 @@ const tvStore = useTvStore();
 
 const props = defineProps({
     tvId: {
-        type: Number,
+        type: String,
         required: true,
     },
 });

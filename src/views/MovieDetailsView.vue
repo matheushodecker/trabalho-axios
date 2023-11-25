@@ -6,7 +6,7 @@ const movieStore = useMovieStore();
 
 const props = defineProps({
     movieId: {
-        type: Number,
+        type: String,
         required: true,
     },
 });
