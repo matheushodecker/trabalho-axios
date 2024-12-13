@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        section {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ff0000, #000000, #ff0000, #000000);
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+    
+}
+
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        font-family: 'Lato';
+        border: 1px solid #fff;
+        transform: perspective(1000px) rotate(-50deg);
+
+
+@keyframes Gradient {
+    0%{ background-position: 00% 25%}
+    12.5%{ background-position: 25% 50%}
+    25%{ background-position: 50% 75%}
+    37.5%{ background-position: 75% 100%}
+    50%{ background-position: 100% 75%}
+    62.5%{ background-position: 75% 50%}
+    75%{ background-position:50% 25%}
+    87.5%{ background-position: 25% 0%}
+    100%{ background-position: 00% 25%}
+  
+
+
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h1>Meu código</h1>
+    </section>
+</body>
+</html>
