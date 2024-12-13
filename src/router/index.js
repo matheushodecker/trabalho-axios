@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/tv',
-    name: 'TV',
+    name: 'Series',
     component: () => import('../views/TvView.vue')
   },
   {
@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '/tv/:tvId',
-    name: 'TvDetails',
+    name: 'SeriesDetails',
     component: () => import('../views/TvDetailsView.vue'),
     props: true,
   }

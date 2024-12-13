@@ -25,7 +25,7 @@ const listTvs = async (genreId) => {
 };
 
 function openTv(tvId) {
-  router.push({ name: 'TvDetails', params: { tvId } });
+  router.push({ name: 'SeriesDetails', params: { tvId } });
 }
 
 onMounted(async () => {
@@ -36,7 +36,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>Programas de TV</h1>
+  <h1>Series</h1>
   <ul class="genre-list">
     <li
       v-for="genre in genreStore.genres"
@@ -74,6 +74,7 @@ onMounted(async () => {
       </div>
     </div>
   </div>
+  
 </template>
 
 <style scoped>
@@ -87,7 +88,7 @@ onMounted(async () => {
 }
 
 .genre-item {
-  background-color: #5d6424;
+  background-color: #0011ff;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   align-self: center;
@@ -98,7 +99,7 @@ onMounted(async () => {
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #7d8a2e;
+  background-color: #ff0000 ;
   box-shadow: 0 0 0.5rem #5d6424;
 }
 
@@ -168,4 +169,6 @@ onMounted(async () => {
   color: #000;
   font-weight: bolder;
 }
+
+
 </style>
